@@ -1,0 +1,18 @@
+
+†
+java:S1192&"kDefine a constant instead of duplicating this literal " INNER JOIN cars ON rents.car_id = cars.id" 3 times.(âˆ¨ƒÿÿÿÿÿ
+j
+java:S1192$"TDefine a constant instead of duplicating this literal "SELECT * FROM rents" 3 times.(Þª¥¹
+Š
+java:S1192%"tDefine a constant instead of duplicating this literal " INNER JOIN clients ON rents.client_id = clients.id" 3 times.(¨‰Ë÷
+r
+java:S2095…"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(˜é”øýÿÿÿÿ8¬“ÔÆž0
+l
+java:S2095X"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î»×Ð8ˆÜŠÃž0
+l
+java:S2095("OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î»×Ð8ª±ŠÃž0
+l
+java:S2095o"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î»×Ð8 ïŠÃž0
+l
+java:S2095B"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î»×Ð8¹šŠÃž0
+V	java:S125"<This block of commented-out lines of code should be removed.(…Þìóøÿÿÿÿ

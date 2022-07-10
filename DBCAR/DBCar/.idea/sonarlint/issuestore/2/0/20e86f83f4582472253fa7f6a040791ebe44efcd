@@ -1,0 +1,13 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¼ä®Ü
+S	java:S106"9Replace this use of System.out or System.err by a logger.(²Ž—Ãøÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ
+N	java:S106 "9Replace this use of System.out or System.err by a logger.(æ…éÑ
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(¼ä®Ü
+J
+java:S1611)"/Remove the parentheses around the "c" parameter(¤ªÒ¶úÿÿÿÿ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(–í˜Žúÿÿÿÿ
+t
+java:S2142-"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+N	java:S1066"9Replace this use of System.out or System.err by a logger.(Îœò—
+N	java:S1067"9Replace this use of System.out or System.err by a logger.(ÚŽÂâ

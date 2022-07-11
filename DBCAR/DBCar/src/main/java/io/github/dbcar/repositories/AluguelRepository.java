@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import io.github.dbcar.infra.CustomConnection;
+import io.github.dbcar.infra.ConexaoBancoDeDados;
 import io.github.dbcar.models.Carro;
 import io.github.dbcar.models.Cliente;
 import io.github.dbcar.models.Aluguel;
@@ -17,8 +17,8 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
 
     private Connection con;
 
-    public AluguelRepository() {
-        this.con = CustomConnection.getConnection();
+    public AluguelRepository() throws SQLException {
+        this.con = ConexaoBancoDeDados.getConnection();
     }
 
     public AluguelRepository(Connection conn) {
@@ -50,7 +50,7 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -72,7 +72,7 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -94,7 +94,7 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return Optional.empty();
@@ -121,7 +121,7 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 
@@ -136,7 +136,7 @@ public class AluguelRepository implements Repository<Integer, Aluguel> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 

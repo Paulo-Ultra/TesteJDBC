@@ -1,5 +1,6 @@
 package io.github.dbcar.services;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,16 +11,16 @@ import io.github.dbcar.common.Logger;
 import io.github.dbcar.models.Carro;
 import io.github.dbcar.repositories.CarroRepository;
 
-public class CarsService {
+public class CarroService {
 
     private final Logger LOGGER = new Logger(Constants.PRINT_STYLE, Constants.PRINT_LENGHT);
     private CarroRepository carsRepository;
 
-    public CarsService() {
+    public CarroService() throws SQLException {
         this.carsRepository = new CarroRepository();
     }
 
-    public CarsService(CarroRepository carsRepository) {
+    public CarroService(CarroRepository carsRepository) {
         this.carsRepository = carsRepository;
     }
 
@@ -64,8 +65,8 @@ public class CarsService {
     }
 
     public void delete(Integer id) {
-        Carro car = findById(id);
-        if (car.getRented().equals("S")) {
+        Carro carro = findById(id);
+        if (carro.getAlugado().equals("S")) {
             LOGGER.outLine("CARRO ESTÁ ALUGADO NÃO É POSSÍVEL EXCLUIR");
             LOGGER.outLine();
         } else {
@@ -104,7 +105,7 @@ public class CarsService {
 
     public void printAvailabreCars() {
         List<Carro> cars = this.carsRepository.findAll().stream()
-                .filter((cart) -> cart.getRented().equals("N")).toList();
+                .filter((cart) -> cart.getAlugado().equals("N")).toList();
 
         List<Object> collect = IntStream.range(0, cars.size())
                 .mapToObj((index) -> index < cars.size() - 1 ? cars.get(index) + "," : cars.get(index))

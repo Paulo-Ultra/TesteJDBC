@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import io.github.dbcar.infra.CustomConnection;
+import io.github.dbcar.infra.ConexaoBancoDeDados;
 import io.github.dbcar.models.Carro;
 
 public class CarroRepository implements Repository<Integer, Carro> {
 
     private Connection con;
 
-    public CarroRepository() {
-        this.con = CustomConnection.getConnection();
+    public CarroRepository() throws SQLException {
+        this.con = ConexaoBancoDeDados.getConnection();
     }
 
     public CarroRepository(Connection con) {
@@ -43,7 +43,7 @@ public class CarroRepository implements Repository<Integer, Carro> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -60,7 +60,7 @@ public class CarroRepository implements Repository<Integer, Carro> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -77,7 +77,7 @@ public class CarroRepository implements Repository<Integer, Carro> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return Optional.empty();
@@ -108,7 +108,7 @@ public class CarroRepository implements Repository<Integer, Carro> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 
@@ -123,7 +123,7 @@ public class CarroRepository implements Repository<Integer, Carro> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 

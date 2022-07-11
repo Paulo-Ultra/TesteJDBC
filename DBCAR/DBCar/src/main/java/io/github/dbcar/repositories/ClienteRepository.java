@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import io.github.dbcar.infra.CustomConnection;
+import io.github.dbcar.infra.ConexaoBancoDeDados;
 import io.github.dbcar.models.Cliente;
 
 public class ClienteRepository implements Repository<Integer, Cliente> {
 
     private Connection con;
 
-    public ClienteRepository() {
-        this.con = CustomConnection.getConnection();
+    public ClienteRepository() throws SQLException {
+        this.con = ConexaoBancoDeDados.getConnection();
     }
 
     public ClienteRepository(Connection con) {
@@ -46,7 +46,7 @@ public class ClienteRepository implements Repository<Integer, Cliente> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -66,7 +66,7 @@ public class ClienteRepository implements Repository<Integer, Cliente> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return null;
@@ -86,7 +86,7 @@ public class ClienteRepository implements Repository<Integer, Cliente> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
 
         return Optional.empty();
@@ -110,7 +110,7 @@ public class ClienteRepository implements Repository<Integer, Cliente> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 
@@ -125,7 +125,7 @@ public class ClienteRepository implements Repository<Integer, Cliente> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            CustomConnection.closeConnection();
+            ConexaoBancoDeDados.closeConnection();
         }
     }
 

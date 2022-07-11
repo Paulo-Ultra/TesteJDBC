@@ -1,5 +1,6 @@
 package io.github.dbcar.services;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,41 +15,41 @@ import io.github.dbcar.models.Aluguel;
 import io.github.dbcar.repositories.CarroRepository;
 import io.github.dbcar.repositories.AluguelRepository;
 
-public class RentsService {
+public class AluguelService {
 
     private final Logger LOGGER = new Logger(Constants.PRINT_STYLE, Constants.PRINT_LENGHT);
     private AluguelRepository rentsRepository;
     private CarroRepository carsRepository;
 
-    public RentsService() {
+    public AluguelService() throws SQLException {
         this.rentsRepository = new AluguelRepository();
         this.carsRepository = new CarroRepository();
     }
 
-    public RentsService(AluguelRepository rentsRepository, CarroRepository carsRepository) {
+    public AluguelService(AluguelRepository rentsRepository, CarroRepository carsRepository) {
         this.rentsRepository = rentsRepository;
         this.carsRepository = carsRepository;
     }
 
-    public Aluguel create(Carro car, Cliente client, LocalDate startDate, LocalDate endDate) {
-        if (car != null) {
-            if (car.getRented().equals("S")) {
+    public Aluguel create(Carro carro, Cliente cliente, LocalDate dataDoAluguel, LocalDate dataDaDevolucao) {
+        if (carro != null) {
+            if (carro.getAlugado().equals("S")) {
                 LOGGER.outLine("CARRO NÃO DISPONIVEL PARA ALUGUEL");
             } else {
-                car.setRented("S");
-                carsRepository.update(car.getId(), car);
+                carro.setAlugado("S");
+                carsRepository.update(carro.getIdCarro(), carro);
 
-                Aluguel rent = new Aluguel();
-                rent.setCar(car);
-                rent.setClient(client);
-                rent.setStartOfRent(startDate);
-                rent.setEndOfRent(endDate);
+                Aluguel aluguel = new Aluguel();
+                aluguel.setCarro(carro);
+                aluguel.setCliente(cliente);
+                aluguel.setDataDoAluguel(dataDoAluguel);
+                aluguel.setDataDaDevolucao(dataDaDevolucao);
 
                 LOGGER.reset();
                 LOGGER.outLine("CARRO ALUGADO COM SUCESSO");
                 LOGGER.outLine();
 
-                return rentsRepository.create(rent);
+                return rentsRepository.create(aluguel);
             }
             LOGGER.outBar();
         }
@@ -120,7 +121,7 @@ public class RentsService {
 
     public void printActiveRents() {
         List<Aluguel> rents = this.rentsRepository.findAll().stream()
-                .filter((rent) -> rent.getEndOfRent().isAfter(LocalDate.now())).toList();
+                .filter((rent) -> rent.getDataDaDevolucao().isAfter(LocalDate.now())).toList();
 
         List<Object> collect = IntStream.range(0, rents.size())
                 .mapToObj((index) -> index < rents.size() - 1 ? rents.get(index) + "," : rents.get(index))

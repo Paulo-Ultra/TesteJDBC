@@ -1,5 +1,6 @@
 package io.github.dbcar.services;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -8,16 +9,16 @@ import io.github.dbcar.common.Logger;
 import io.github.dbcar.models.Cliente;
 import io.github.dbcar.repositories.ClienteRepository;
 
-public class ClientsService {
+public class ClienteService {
 
     private final Logger LOGGER = new Logger(Constants.PRINT_STYLE, Constants.PRINT_LENGHT);
     private ClienteRepository clientsRepository;
 
-    public ClientsService() {
+    public ClienteService() throws SQLException {
         this.clientsRepository = new ClienteRepository();
     }
 
-    public ClientsService(ClienteRepository clientsRepository) {
+    public ClienteService(ClienteRepository clientsRepository) {
         this.clientsRepository = clientsRepository;
     }
 
